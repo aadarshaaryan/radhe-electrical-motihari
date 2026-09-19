@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Variables & Reset
+   Variables & CSS Reset
    ========================================================================== */
 :root {
     --primary: #0b3b6f;
@@ -122,7 +122,7 @@ img {
 }
 
 /* ==========================================================================
-   Navigation
+   Navigation Bar & Strict Active Link Styling
    ========================================================================== */
 .navbar {
     background-color: var(--white);
@@ -162,41 +162,58 @@ img {
     height: 34px;
 }
 
-.logo-box.small img{
+.logo-box img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
+.brand-text .brand-title,
 .brand-text h1 {
     font-size: 1.1rem;
     font-weight: 800;
     letter-spacing: -0.5px;
     color: var(--primary);
     line-height: 1.1;
+    display: block;
 }
 
+.brand-text .brand-subtitle,
 .brand-text span {
     font-size: 0.65rem;
     letter-spacing: 0.25em;
     color: var(--text-muted);
     font-weight: 600;
+    display: block;
 }
 
+/* Links Container */
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 28px;
     font-size: 0.92rem;
-    font-weight: 500;
 }
 
-.nav-links a {
+/* Default / Inactive State: no underline, neutral color */
+.nav-links .nav-item {
     color: var(--text-main);
+    padding: 8px 2px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
     transition: var(--transition);
-    padding: 6px 0;
+    display: inline-block;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+/* Hover State */
+.nav-links .nav-item:hover {
     color: var(--accent);
+}
+
+/* Active State ONLY: applied dynamically by JavaScript */
+.nav-links .nav-item.active {
+    color: var(--accent);
+    font-weight: 700;
     border-bottom: 2px solid var(--accent);
 }
 
@@ -236,7 +253,7 @@ img {
 }
 
 /* ==========================================================================
-   Hero Carousel
+   Hero Carousel Slider
    ========================================================================== */
 .hero-carousel-wrapper {
     position: relative;
@@ -452,7 +469,7 @@ img {
 }
 
 /* ==========================================================================
-   Value Props Strip
+   Value Propositions Strip
    ========================================================================== */
 .value-props {
     background: var(--white);
@@ -551,6 +568,7 @@ img {
     color: #93c5fd;
 }
 
+.about-text-col h2,
 .about-text-col h3 {
     font-size: 1.7rem;
     font-weight: 800;
@@ -580,6 +598,7 @@ img {
     margin: 16px 0;
 }
 
+.about-purpose-box h3,
 .about-purpose-box h4 {
     font-size: 0.9rem;
     color: var(--primary);
@@ -651,6 +670,7 @@ img {
     margin-bottom: 18px;
 }
 
+.values-card h3,
 .values-card h4 {
     font-size: 1rem;
     font-weight: 700;
@@ -713,6 +733,7 @@ img {
     padding: 60px 0;
 }
 
+.why-us-heading h2,
 .why-us-heading h3 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -750,6 +771,7 @@ img {
     margin-top: 3px;
 }
 
+.feature-item h4,
 .feature-item h5 {
     font-size: 0.95rem;
     font-weight: 700;
@@ -809,6 +831,7 @@ img {
     background: rgba(37, 99, 235, 0.6);
 }
 
+.video-content h4,
 .video-content h5 {
     font-size: 0.85rem;
     font-weight: 700;
@@ -1100,14 +1123,18 @@ img {
     gap: 10px;
 }
 
+.footer-title,
 .footer-brand h4 {
+    display: block;
     color: var(--white);
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1;
 }
 
+.footer-subtitle,
 .footer-brand span {
+    display: block;
     font-size: 0.6rem;
     letter-spacing: 0.15em;
     color: #64748b;
@@ -1138,7 +1165,7 @@ img {
 }
 
 /* ==========================================================================
-   Complete Responsive Rules (Tablets, Mobiles, Ultra-Small Screens)
+   Responsive Breakpoints & Mobile Drawer
    ========================================================================== */
 @media (max-width: 1024px) {
     .hero-title {
@@ -1199,6 +1226,7 @@ img {
         font-size: 0.75rem;
     }
 
+    /* Mobile Drawer */
     .nav-links {
         display: none;
         position: absolute;
@@ -1208,7 +1236,7 @@ img {
         background: var(--white);
         flex-direction: column;
         gap: 0;
-        padding: 10px 0;
+        padding: 8px 0;
         border-bottom: 2px solid var(--accent);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         z-index: 1001;
@@ -1218,16 +1246,19 @@ img {
         display: flex;
     }
 
-    .nav-links a {
+    .nav-links .nav-item {
         padding: 12px 24px;
         border-bottom: 1px solid #f1f5f9;
         width: 100%;
+        display: block;
+        color: var(--text-main);
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-        background-color: #f8fafc;
-        border-bottom: 1px solid #f1f5f9;
+    .nav-links .nav-item:hover,
+    .nav-links .nav-item.active {
+        background-color: #f0f9ff;
+        color: var(--accent);
+        border-bottom: 1px solid #e0f2fe;
     }
 
     .carousel-slide {
